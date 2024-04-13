@@ -1,12 +1,10 @@
-CREATE DATABASE Employee_Tracker;
+DROP DATABASE IF EXISTS employee_tracker;
 
-DROP DATABASE IF EXISTS Employee_Tracker;
-
-CREATE DATABASE Employee_Tracker;
+CREATE DATABASE employee_tracker;
 
 SHOW DATABASES;
 
-USE Employee_Tracker;
+USE employee_tracker;
 
 CREATE TABLE employees (
     emp_no       INT             NOT NULL,
@@ -21,8 +19,7 @@ CREATE TABLE employees (
 CREATE TABLE departments (
     dept_no     CHAR(4)        NOT NULL,
     dept_name   VARCHAR(40)    NOT NULL,
-    PRIMARY KEY (dept_no),
-    PRIMARY KEY (dept_name)
+    PRIMARY KEY (dept_no, dept_name)
 );
 
 CREATE TABLE department_manager (
