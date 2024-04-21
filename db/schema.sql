@@ -10,7 +10,19 @@ CREATE TABLE employees (
     last_name    VARCHAR(16)     NOT NULL,
     gender       ENUM ('M', 'F') NOT NULL,
     hire_date    DATE            NOT NULL,
+    job_title    VARCHAR(16)     NOT NULL,
+    role_no      INT             NOT NULL,
+    dept_no      INT             NOT NULL,
+    salary_no    INT             NOT NULL,
     PRIMARY KEY  (emp_no)
+);
+
+CREATE TABLE employee_roles (
+    job_title    VARCHAR(30)     NOT NULL,
+    role_no      INT             NOT NULL,
+    dept_no      INT             NOT NULL,
+    salary_no    INT             NOT NULL,
+    PRIMARY KEY  (role_no)
 );
 
 CREATE TABLE departments (
@@ -24,3 +36,4 @@ CREATE TABLE department_manager (
     dept_no    INT                  NOT NULL,
     PRIMARY KEY (emp_no, dept_no)
 );
+

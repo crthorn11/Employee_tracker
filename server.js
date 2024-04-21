@@ -18,9 +18,6 @@ const db = mysql.createConnection({
 }, console.log(`Connected to the employee_tracker database.`));
 
 // Query database
-// db.query('SELECT * FROM employees', function (err, results) {
-//   console.log(results);
-// });
 const viewAllEmployees = () => {
   const query = 'SELECT * FROM employees';
   db.query(query, (err, results) => {
@@ -28,10 +25,13 @@ const viewAllEmployees = () => {
       console.error('Error retrieving employees:', err);
       return;
     }
-    console.log('All Employees:');
-    console.table(results); // Using console.table to nicely display the results in a table format
+    promptUser();
   });
 };
+
+// const viewAllRoles = () = => {
+//   const query = ''
+// }
 
 //Inquirer prompts below
 
@@ -52,7 +52,6 @@ const promptUser = () => {
         'Add Employee',
         'Add Role',
         'Add Department',
-        'Exit'
       ]
     }
   ]).then((answers) => {
