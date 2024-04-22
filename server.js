@@ -1,37 +1,32 @@
-const express = require('express');
 const inquirer = require('inquirer');
 const mysql = require('mysql2');
+require('dotenv').config();
 
-const PORT = process.env.PORT || 3001;
-const app = express();
-
-// Express middleware
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
-
-// Connect to database
+try {
+  // Connect to database
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
+  host: process.env.db_host,
+  user: process.env.db_user,
+  password: process.env.db_password,
   database: 'employee_tracker'
 }, console.log(`Connected to the employee_tracker database.`));
 
 // Query database
-const viewAllEmployees = () => {
-  const query = 'SELECT * FROM employees';
+const viewAllEmployee = () => {
+  const query = 'SELECT * FROM employee';
   db.query(query, (err, results) => {
     if (err) {
-      console.error('Error retrieving employees:', err);
+      console.error('Error retrieving employee:', err);
       return;
     }
+    console.table(results);
     promptUser();
   });
 };
 
-// const viewAllRoles = () = => {
-//   const query = ''
-// }
+//  const viewAllRoles = () = => {
+//    const query = ''
+//  }
 
 //Inquirer prompts below
 
@@ -95,9 +90,7 @@ const promptUser = () => {
   });
 };
 
-promptUser();
-
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+ promptUser();
+} catch (error) {
+  console.log(error);
+}
