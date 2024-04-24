@@ -73,6 +73,7 @@ const addDepartment = () => {
           console.log('Department added successfully!');
           resolve();
         }
+        promptUser();
       });
     });
   });
@@ -113,6 +114,7 @@ const addRole = () => {
           console.log('Role added successfully!');
           resolve();
         }
+        promptUser();
       });
     });
   });
@@ -158,6 +160,7 @@ const addEmployee = () => {
           console.log('Employee added successfully!');
           resolve();
         }
+        promptUser();
       });
     });
   });
